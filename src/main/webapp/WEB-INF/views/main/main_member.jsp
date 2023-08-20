@@ -155,7 +155,7 @@
                                     <h3 id="korCarH3" class="sideHtag"> <a href="#">고객센터</a></h3>
                                    <hr>
                                     <ul id="parkCarUl">
-                                        <li> <a href="/notice/list.do?currentPage=1" class="sideA">-공지사항 </a></li>
+                                        <li> <a href="/notice/list.do" class="sideA">-공지사항 </a></li>
                                         <li> <a href="../userService/serviceMain.html" class="sideA">-1대1 문의</a></li>
                                         <li> <a href="../userService/serviceMain.html" class="sideA">-건의 / 신고</a></li>
                                       
@@ -304,7 +304,7 @@
                                 </article>
                             </article>
                             <article id="btn-right">
-                                <article id="btn-right1">  <div class="main-btn">  <a href="/notice/list.do?currentPage=1"><img class="btnImg" src="../resources/image/btn3.jpg" alt="carprice" ></a> </div> <a href="/notice/list.do?currentPage=1"> 공지사항</a></article>
+                                <article id="btn-right1">  <div class="main-btn">  <a href="/notice/list.do?currentPage=1"><img class="btnImg" src="../resources/image/btn3.jpg" alt="carprice" ></a> </div> <a href="/notice/list.do"> 공지사항</a></article>
                                 <article id="btn-right2">  <div class="main-btn">  <a href="../userService/serviceMain.html"><img class="btnImg" src="../resources/image/btn4.jpg" alt="carprice" ></a> </div> <a href="../userService/serviceMain.html">1대1 문의 </a></article>
                                 <article id="btn-right3">  <div class="main-btn">  <a href="../userService/serviceMain.html"><img class="btnImg" src="../resources/image/btn5.jpg" alt="carprice" ></a> </div> <a href="../userService/serviceMain.html"> 건의/신고</a></article>
                                 <article id="btn-right4">  <div class="main-btn">  <a href="../userService/serviceMain.html"><img class="btnImg" src="../resources/image/btn6.jpg" alt="carprice" ></a> </div> <a href="../userService/serviceMain.html"> 고객센터</a></article>

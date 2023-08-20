@@ -56,6 +56,14 @@ public class MemberController {
 		
 		
 	}
+	@RequestMapping(value="/member/memberMain.do", method=RequestMethod.GET)
+	public String showMemberMain() {
+		
+//		session = request.getSession();
+//		Member member = (Member)session.getAttribute("member");
+//		session.setAttribute("member", member);
+		return "main/main_member";
+	}
 	
 	@RequestMapping(value="/member/login.do", method=RequestMethod.GET)
 	public String loginMemberShow() {
@@ -188,13 +196,7 @@ public class MemberController {
 		return null;
 	}
 	
-	@RequestMapping(value="/notice/KorFreelist.do",method=RequestMethod.GET)
-	public String showKorFreeBoard(Model model) {
-		
-		Member member = (Member)session.getAttribute("member");
-		model.addAttribute("member",member);
-		return "category/korFreeBoard";
-	}
+	
 	
 	
 	

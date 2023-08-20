@@ -26,7 +26,7 @@
                 <header id="menu">
                     <article id="menuTag">
                         <ul id="menuUl">
-                            <li class="menuClass">김현우님</li> 
+                            <li class="menuClass">${member.memberName}님</li> 
                             <li class="menuClass" > <a href="/member/mypage.do">MY </a></li>
                             <li class="menuClass"> <a href="/member/myInfo.do">정보수정 </a> </li>
                             <li class="menuClass" id="menuMy" >  <a href="#"> <span id="menuMy2" onclick ="csnoticeTag()" >알림 </span>  </a></li>
@@ -80,7 +80,7 @@
                             </article> -->
                             </section>
                             <section id="login-top-right">
-                                김현우님 <br>
+                                ${member.memberName}님 <br>
                                 반갑습니다
                                 <!-- <article id="login-top-loginBtn">
                                     <input type="submit" value="로그인" id="user-login">
@@ -187,7 +187,7 @@
                                           ${notice.noticeContent}
                                     </section>
                                     <section id="writeMainBtn">
-                                        <button id="backNotice"><a href="/notice/list.do?currentPage=1"> 목록 </a></button> 
+                                        <button id="backNotice"><a href="/notice/list.do"> 목록 </a></button> 
                                            <button><a href="/notice/modify.do?noticeNo=${notice.noticeNo}"> 수정하기 </a></button>
                                               <button ><a href="/notice/delete.do?noticeNo=${notice.noticeNo}"> 삭제하기 </a></button>
                                     </section>

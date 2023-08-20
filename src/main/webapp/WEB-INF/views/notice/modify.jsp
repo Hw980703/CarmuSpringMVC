@@ -8,7 +8,7 @@
 </head>
 <body>
 	<h1> 공지사항 수정 </h1>
-<form action="" method="post">
+<form action="/notice/modify.do" method="post">
 <input type="text" name="noticeNo" value="${notice.noticeNo}">
 		<fieldset>
 			<legend>공지사항 수정</legend>

@@ -6,11 +6,14 @@
   <configuration>
   <typeAliases>
  	 <typeAlias type ="kr.co.carmunity.member.domain.Member" alias="Membrer"/> 
+ 	  <typeAlias type ="kr.co.carmunity.freeboard.dmstcar.domain.dmstFreeBoard" alias="dsmtFree"/> 
+ 	  <typeAlias type ="kr.co.carmunity.notice.domain.Notice" alias="Notice"/> 
   </typeAliases>
 
 
 	<mappers>
 		<mapper resource="mappers/member-mapper.xml"/>
-	
+		<mapper resource="mappers/kor-board.xml"/>
+		<mapper resource="mappers/notice.xml"/>
 	</mappers>
   </configuration>

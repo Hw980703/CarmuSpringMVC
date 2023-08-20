@@ -13,7 +13,7 @@
 <style>
 	table{
 		width : 800px;
-		border : 1px solid black;
+/* 		border : 1px solid black; */
 		border-collapse : collapse;
 	}
 	th,td {
@@ -41,7 +41,7 @@
 					<header id="menu">
 						<article id="menuTag">
 							<ul id="menuUl">
-								<li class="menuClass">김현우님</li>
+								<li class="menuClass">${member.memberName}님</li>
 								<li class="menuClass"><a href="/member/mypage.do">MY
 								</a></li>
 								<li class="menuClass"><a href="/member/myInfo.do">정보수정
@@ -133,7 +133,7 @@
                             </article> -->
 							</section>
 							<section id="login-top-right">
-								김현우님 <br> 반갑습니다
+								${member.memberName}님 <br> 반갑습니다
 								<!-- <article id="login-top-loginBtn">
                                     <input type="submit" value="로그인" id="user-login">
                                 </article> -->
@@ -292,11 +292,15 @@
 								</tr>
 
 							</c:forEach>
-							<tr>
-								<td colspan="5" align="center">${pageNavi}<!-- 			<a href="#">1</a> -->
-									<!-- 			<a href="#">2</a> --> <!-- 			<a href="#">3</a> --> <!-- 			<a href="#">4</a> -->
-									<!-- 			<a href="#">5</a> -->
-							</tr>
+							<tr align="center">
+				<td colspan="5"><c:forEach begin="${pInfo.startNavi}"
+						end="${pInfo.endNavi}" var="p">
+						<c:url var="pageUrl" value="/notice/list.do">
+							<c:param name="page" value="${p}"></c:param>
+						</c:url>
+						<a href="${pageUrl}">${p}</a> &nbsp;
+					</c:forEach></td>
+			</tr>
 
 
 						</tbody>

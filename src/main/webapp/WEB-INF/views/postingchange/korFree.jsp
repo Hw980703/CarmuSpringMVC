@@ -193,7 +193,7 @@
                                         
                                         </select>
                                     </article>
-                                    <form action = "/korboard/change.do" method = "get">
+                                    <form action = "/korboard/change.do" method = "post">
                                     <article id="writingCenter">
                                   <input type="text" name = "korFreeBoardNo" value="${korFreeBoard.korFreeBoardNo}" >
                                     <br>

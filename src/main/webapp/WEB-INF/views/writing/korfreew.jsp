@@ -80,7 +80,7 @@
                             </article> -->
                             </section>
                             <section id="login-top-right">
-                                김현우님 <br>
+                               ${member.memberName}님 <br>
                                 반갑습니다
                                 <!-- <article id="login-top-loginBtn">
                                     <input type="submit" value="로그인" id="user-login">
@@ -193,7 +193,7 @@
                                         
                                         </select>
                                     </article>
-                                    <form action = "/write/korFree.do" method = "post">
+                                    <form action = "/write/korFree.do?memberName=${member.memberName}" method = "post">
                                     <article id="writingCenter">
                                         <span>제목 </span> <input type="text" name="writeTitle" id="writeTitle" placeholder="제목을 입력하세요.">
                                     </article>

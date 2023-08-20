@@ -312,7 +312,7 @@
 		
 		<tbody>
 			<!-- 		for(Notice notice : nList) -->
-		<c:forEach items="${requestScope.nList}" var="notice">
+		<c:forEach items="${requestScope.dList}" var="notice">
 				<tr>
 					<td>${notice.korFreeBoardNo}</td>
 <!-- 					?는 키값을 넘겨주는거임 -->
@@ -323,18 +323,15 @@
 				</tr>
 
 			</c:forEach>
-		<tr>
-			<td colspan = "5" align ="center" >
-				${pageNavi}
-			
-			
-<!-- 			<a href="#">1</a> -->
-<!-- 			<a href="#">2</a> -->
-<!-- 			<a href="#">3</a> -->
-<!-- 			<a href="#">4</a> -->
-<!-- 			<a href="#">5</a> -->
-</td>
-		</tr>
+			<tr align="center">
+				<td colspan="5"><c:forEach begin="${pInfo.startNavi}"
+						end="${pInfo.endNavi}" var="p">
+						<c:url var="pageUrl" value="/notice/KorFreelist.do">
+							<c:param name="page" value="${p}"></c:param>
+						</c:url>
+						<a href="${pageUrl}">${p}</a> &nbsp;
+					</c:forEach></td>
+			</tr>
 
 
 
@@ -351,15 +348,15 @@
 <!--                                                 <button class="numberBtn" id="noticeBtn4">3</button>  -->
 <!--                                                 <button class="numberBtn" id="noticeBtn5">4</button>  -->
 <!--                                                 <button class="numberBtn" id="noticeBtn6">></button> -->
-                                                <button id="noticeBtn7"> <a href ="/write/korFree.do?memberId= ${memberId}"> 글쓰기 </a></button> 
+                                                <button id="noticeBtn7"> <a href ="/write/korFree.do?memberName= ${memberName}"> 글쓰기 </a></button> 
                                         </section>
                                         
                                     
                                         <section id="noticesearch">
                                             <select>
-                                                <option value="전체">전체</option>
-                                                <option value="제목">제목</option>
-                                                <option value="글쓴이">글쓴이</option>
+                                                <option value="all">전체</option>
+                                                <option value="subject">제목</option>
+                                                <option value="writer">글쓴이</option>
                                             </select>
                                             <input type="text" name="searchText" id="searchText" placeholder="검색어를 입력하세요.">
                                             <button id="noticeSerachBtn">검색</button>
@@ -395,7 +392,7 @@
     <script>
             
             document.querySelector("#noticeBtn7").addEventListener("click",()=>{
-                location.href="/write/korFree.do?memberId= ${memberId}"
+                location.href="/write/korFree.do?memberName= ${memberName}"
             })
 
             document.querySelector("#noticeBtn1").addEventListener("click",()=>{

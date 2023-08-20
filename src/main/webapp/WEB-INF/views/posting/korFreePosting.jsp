@@ -26,7 +26,7 @@
                 <header id="menu">
                     <article id="menuTag">
                         <ul id="menuUl">
-                            <li class="menuClass">김현우님</li> 
+                            <li class="menuClass"> ${member.memberName}님</li> 
                             <li class="menuClass" > <a href="/member/mypage.do">MY </a></li>
                             <li class="menuClass"> <a href="/member/myInfo.do">정보수정 </a> </li>
                             <li class="menuClass" id="menuMy" >  <a href="#"> <span id="menuMy2" onclick ="csnoticeTag()" >알림 </span>  </a></li>
@@ -80,7 +80,7 @@
                             </article> -->
                             </section>
                             <section id="login-top-right">
-                                김현우님 <br>
+                                 ${member.memberName}님 <br>
                                 반갑습니다
                                 <!-- <article id="login-top-loginBtn">
                                     <input type="submit" value="로그인" id="user-login">
@@ -190,7 +190,7 @@
                                             <img src="../resources/image/001.jpg" alt="writeImg" width="60%">
                                         </article>
                                         <article id="topTitle">
-                                            <h6>닉네임 : 도봉구보안관</h6>
+                                            <h6>닉네임 : ${korFreeBoard.korFreeBoardWriter}</h6>
                                             <h6>등급 : 소형</h6>
                                         </article>
                                         <article id="writeAll">
