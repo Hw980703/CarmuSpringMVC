@@ -1,6 +1,8 @@
 package kr.co.carmunity.notice.controller;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -19,18 +21,17 @@ import kr.co.carmunity.notice.service.NoticeService;
 
 @Controller
 public class NoticeController {
-	
+
 	@Autowired
 	NoticeService service;
-	
-	
-	@RequestMapping(value="/notice/list.do",method=RequestMethod.GET)
-	public String showKorFreeBoard(@RequestParam(value= "page", required = false, defaultValue="1") Integer curruntPage,
-			Model model) {
+
+	@RequestMapping(value = "/notice/list.do", method = RequestMethod.GET)
+	public String showKorFreeBoard(
+			@RequestParam(value = "page", required = false, defaultValue = "1") Integer curruntPage, Model model) {
 		try {
 //			int curruntPage = page != 0 ? page : 1;
-			
-			//쿼리문 SELECT COUNT(*) FROM NOTICE_TBL
+
+			// 쿼리문 SELECT COUNT(*) FROM NOTICE_TBL
 			int totalCount = service.getListCount();
 			PageInfo pInfo = this.getPageInfo(curruntPage, totalCount);
 			List<Notice> nList = service.selectNoticeList(pInfo);
@@ -39,7 +40,7 @@ public class NoticeController {
 			// 2. Size()
 
 			if (nList.size() > 0) {
-				model.addAttribute("pInfo",pInfo);
+				model.addAttribute("pInfo", pInfo);
 				model.addAttribute("nList", nList);
 				return "userService/mainNotice";
 			} else {
@@ -56,8 +57,7 @@ public class NoticeController {
 			return "common/errorPage";
 		}
 	}
-	
-	
+
 	public PageInfo getPageInfo(int curruntPage, int totalCount) {
 
 		PageInfo pi = null;
@@ -102,133 +102,188 @@ public class NoticeController {
 				naviTotalCount);
 		return pi;
 	}
-	
-	
-	@RequestMapping(value="/notice/insert.do",method=RequestMethod.GET)
+
+	@RequestMapping(value = "/notice/insert.do", method = RequestMethod.GET)
 	public String ShowNoticeWrite() {
-		
-	
+
 		return "notice/insert";
-		
+
 	}
-	@RequestMapping(value="/notice/insert.do",method=RequestMethod.POST)
-	public String NoticeWrite(
-			@RequestParam("noticeSubject")String noticeSubject,@RequestParam("noticeContent")String noticeContent
-			,Model model) {
-		
+
+	@RequestMapping(value = "/notice/insert.do", method = RequestMethod.POST)
+	public String NoticeWrite(@RequestParam("noticeSubject") String noticeSubject,
+			@RequestParam("noticeContent") String noticeContent,
+			Model model) {
+
 		try {
 			String write = "admin";
 			Notice notice = new Notice(noticeSubject, noticeContent, write);
 			int result = service.NoticeWrite(notice);
-			
-			if(result > 0) {
-				
-				//성공
+
+			if (result > 0) {
+
+				// 성공
 				return "redirect:/notice/list.do";
 			}
-			
+
 			else {
 				model.addAttribute("error", "게시글 작성에 실패하였습니다.");
 				model.addAttribute("msg", "게시글 작성 실패");
 				model.addAttribute("url", "/main/main_member.jsp");
 				return "common/errorPage";
 			}
-			
+
 		} catch (Exception e) {
 			model.addAttribute("error", "관리자 문의");
 			model.addAttribute("msg", e.getMessage());
 			model.addAttribute("url", "/main/main_member.jsp");
 			return "common/errorPage";
 		}
-			
+
 	}
-	
-	@RequestMapping(value="/notice/detail.do",method=RequestMethod.GET)
-	public String NoticeDetail(@RequestParam("noticeNo")int noticeNo,Model model,HttpServletRequest request,HttpSession session) {
-		
+
+	@RequestMapping(value = "/notice/detail.do", method = RequestMethod.GET)
+	public String NoticeDetail(@RequestParam("noticeNo") int noticeNo, Model model, HttpServletRequest request,
+			HttpSession session) {
+
 		try {
 			Notice notice = service.selectByNo(noticeNo);
-			if(notice != null) {
-				//성공
+			if (notice != null) {
+				// 성공
 				session = request.getSession();
 				session.setAttribute("notice", notice);
 				return "userService/noticeWrite";
-			}else {
-				//실패
+			} else {
+				// 실패
 				model.addAttribute("error", "페이지 조회에 실패하였습니다.");
 				model.addAttribute("msg", "페이지  조회 실패 ㅋ");
 				model.addAttribute("url", "/main/main_member.jsp");
-				return "common/errorPage";		}
-			
-			
+				return "common/errorPage";
+			}
+
 		} catch (Exception e) {
 			model.addAttribute("error", "관리자 문의");
 			model.addAttribute("msg", e.getMessage());
 			model.addAttribute("url", "/main/main_member.jsp");
-			return "common/errorPage";		}
-		
+			return "common/errorPage";
+		}
+
 	}
-	
-	
-	@RequestMapping(value="/notice/delete.do",method=RequestMethod.GET)
-	public String NoticeDelete(@RequestParam("noticeNo")int noticeNo,Model model) {
-		
+
+	@RequestMapping(value = "/notice/delete.do", method = RequestMethod.GET)
+	public String NoticeDelete(@RequestParam("noticeNo") int noticeNo, Model model) {
+
 		try {
-		int result = service.deleteByNo(noticeNo);
-			if(result > 0 ) {
-				//성공
-				
+			int result = service.deleteByNo(noticeNo);
+			if (result > 0) {
+				// 성공
+
 				return "redirect:/notice/list.do";
-			}else {
-				//실패
+			} else {
+				// 실패
 				model.addAttribute("error", "공지사항 삭제 실패하였습니다.");
 				model.addAttribute("msg", "공지사항 삭제 실패 ㅋ");
 				model.addAttribute("url", "/main/main_member.jsp");
-				return "common/errorPage";		}
-			
-			
+				return "common/errorPage";
+			}
+
 		} catch (Exception e) {
 			model.addAttribute("error", "관리자 문의");
 			model.addAttribute("msg", e.getMessage());
 			model.addAttribute("url", "/main/main_member.jsp");
-			return "common/errorPage";		}
-		
+			return "common/errorPage";
+		}
+
 	}
-	
-	
-	@RequestMapping(value="/notice/modify.do",method=RequestMethod.GET)
+
+	@RequestMapping(value = "/notice/modify.do", method = RequestMethod.GET)
 	public String showNoticeModify() {
-		
+
 		return "notice/modify";
 	}
-	
-	@RequestMapping(value="/notice/modify.do",method=RequestMethod.POST)
-	public String NoticeModify(@RequestParam("noticeNo")int noticeNo,
-			@RequestParam("noticeSubject")String noticeSubject,
-			@RequestParam("noticeContent")String noticeContent,Model model) {
-		
+
+	@RequestMapping(value = "/notice/modify.do", method = RequestMethod.POST)
+	public String NoticeModify(@RequestParam("noticeNo") int noticeNo,
+			@RequestParam("noticeSubject") String noticeSubject, @RequestParam("noticeContent") String noticeContent,
+			Model model) {
+
 		try {
-			
+
 			Notice notice = new Notice(noticeNo, noticeSubject, noticeContent);
 			int result = service.updateByNo(notice);
-			if(result > 0 ) {
-				//성공
-				
+			if (result > 0) {
+				// 성공
+
 				return "redirect:/notice/list.do";
-			}else {
-				//실패
+			} else {
+				// 실패
 				model.addAttribute("error", "공지사항 수정에 실패하였습니다.");
-				model.addAttribute("msg","공지사항 수정 실패");
+				model.addAttribute("msg", "공지사항 수정 실패");
 				model.addAttribute("url", "/main/main_member.jsp");
-				return "common/errorPage";		}
-			
-			
+				return "common/errorPage";
+			}
+
 		} catch (Exception e) {
 			model.addAttribute("error", "관리자 문의");
 			model.addAttribute("msg", e.getMessage());
 			model.addAttribute("url", "/main/main_member.jsp");
-			return "common/errorPage";		}
-		
+			return "common/errorPage";
+		}
+
 	}
-	
+
+	@RequestMapping(value = "/notice/search.do", method = RequestMethod.POST)
+	public String searchNotice(@RequestParam(value = "page", required = false, defaultValue = "1") Integer curruntPage,
+			@RequestParam("searchCondiition") String searchCondiition,
+			@RequestParam("searchKeyword") String searchKeyword, Model model) {
+
+		Map<String, String> paramMap = new HashMap<String, String>();
+		paramMap.put("searchCondition", searchCondiition);
+		paramMap.put("searchKeyword", searchKeyword);
+		int totalCount = service.getListCount(paramMap);
+		PageInfo pInfo = this.getPageInfo(curruntPage, totalCount);
+
+		List<Notice> searchList = service.searchNoticeByKeyword(pInfo, paramMap);
+
+		// switch 문이 mapper 들어갔음
+		// switch(searchCondiition) {
+//		case "all" : 
+//		searchList = service.searchNoticeAll(searchKeyword,pInfo);
+//		break;
+//		case "writer" :
+//			searchList = service.searchNoticeByWriter(searchKeyword,pInfo);
+//			break;
+//		case "title" : 
+//		searchList = service.searchNoticeByTitle(searchKeyword,pInfo);
+//			
+//			break;
+//		case "content" :
+//			searchList = service.searchNoticeByContent(searchKeyword,pInfo);
+//			break;
+//		
+//		
+//		}
+		try {
+			if (!searchList.isEmpty()) {
+
+				model.addAttribute("searchCondition", searchCondiition);
+				model.addAttribute("searchKeyword", searchKeyword);
+				model.addAttribute("pInfo", pInfo);
+				model.addAttribute("sList", searchList);
+				return "userService/mainSearchNotice";
+			} else {
+				model.addAttribute("error", "관리자 문의");
+				model.addAttribute("msg", "실패함 ㅋㅋ");
+				model.addAttribute("url", "/notice/list.kh");
+				return "userService/mainNotice";
+			}
+
+		} catch (Exception e) {
+			model.addAttribute("error", "관리자 문의");
+			model.addAttribute("msg", e.getMessage());
+			model.addAttribute("url", "/main/main_member.jsp");
+			return "common/errorPage";
+		}
+	}
+
 }

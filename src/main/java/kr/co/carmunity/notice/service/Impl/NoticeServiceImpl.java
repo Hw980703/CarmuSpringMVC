@@ -1,6 +1,7 @@
 package kr.co.carmunity.notice.service.Impl;
 
 import java.util.List;
+import java.util.Map;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -65,6 +66,22 @@ List<Notice> nList = nStore.selectNoticeList(session,pInfo);
 		int result = nStore.updateByNo(session,notice);
 		
 		return result;
+	}
+
+	@Override
+	public int getListCount(Map<String, String> paramMap) {
+		
+		int result = nStore.selectListCount(session,paramMap);
+		
+		return result;
+		
+	}
+
+	@Override
+	public List<Notice> searchNoticeByKeyword(PageInfo pInfo, Map<String, String> paramMap) {
+List<Notice> nList = nStore.searchNoticeByKeyword(session,pInfo,paramMap);
+		
+		return nList;
 	}
 
 }

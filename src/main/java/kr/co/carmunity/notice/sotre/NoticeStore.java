@@ -1,6 +1,7 @@
 package kr.co.carmunity.notice.sotre;
 
 import java.util.List;
+import java.util.Map;
 
 import org.apache.ibatis.session.SqlSession;
 
@@ -20,5 +21,9 @@ public interface NoticeStore {
 	int deleteByNo(SqlSession session, int noticeNo);
 
 	int updateByNo(SqlSession session, Notice notice);
+
+	int selectListCount(SqlSession session, Map<String, String> paramMap);
+
+	List<Notice> searchNoticeByKeyword(SqlSession session, PageInfo pInfo, Map<String, String> paramMap);
 
 }

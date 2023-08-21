@@ -1,6 +1,7 @@
 package kr.co.carmunity.freeboard.dmstcar.store;
 
 import java.util.List;
+import java.util.Map;
 
 import org.apache.ibatis.session.SqlSession;
 
@@ -20,5 +21,9 @@ public interface dmstStore {
 	int deleteByNo(SqlSession session, int korFreeBoardNo);
 
 	int updateByNo(SqlSession session, dmstFreeBoard dmst);
+
+	int selectListCount(SqlSession session, Map<String, String> paramMap);
+
+	List<dmstFreeBoard> searchNoticeByKeyword(SqlSession session, PageInfo pInfo, Map<String, String> paramMap);
 
 }

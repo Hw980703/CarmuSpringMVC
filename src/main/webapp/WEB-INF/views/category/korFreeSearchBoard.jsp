@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-
+    <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -8,7 +8,16 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>자동차 커뮤니티 No.1 카뮤니티</title>
-        <link rel="stylesheet" a href="../resources/css/post.css">
+        <link rel="stylesheet" a href="../resources/css/korFreeBoard.css">
+        <style>
+        table{
+        text-align: center;
+        }
+        
+        #toptr{
+        background: skyblue;
+        }
+        </style>
     </head>
     <body>
 
@@ -26,7 +35,7 @@
                 <header id="menu">
                     <article id="menuTag">
                         <ul id="menuUl">
-                            <li class="menuClass">김현우님</li> 
+                            <li class="menuClass">${member.memberName}님</li> 
                             <li class="menuClass" > <a href="/member/mypage.do">MY </a></li>
                             <li class="menuClass"> <a href="/member/info.do">정보수정 </a> </li>
                             <li class="menuClass" id="menuMy" >  <a href="#"> <span id="menuMy2" onclick ="csnoticeTag()" >알림 </span>  </a></li>
@@ -61,6 +70,7 @@
                         <article  class = "navaCtegory" id="lateCategory">    <a href="../category/lateCarBoard.html">딜러 매칭 </a> <a href="../category/latePriceBoard.html"><br> 견적 문의</a></article>
                         <article  class = "navaCtegory" id="serviceCategory"> <a href="/notice/list.do?currentPage=1">공지사항  </a> <a href="../userService/qna.html"><br> 1대1 문의        </a> <br> <a href="../userService/serviceMain.html">건의/신고</a></article>
                         <article  class = "navaCtegory" id="myCategory">      <a href="/member/info.do">정보 수정 </a> <a href="../userService/serviceMain.html"> <br> 고객센터</a></article>
+    
                 </section>
                 </nav>
             </header>
@@ -80,7 +90,7 @@
                             </article> -->
                             </section>
                             <section id="login-top-right">
-                                김현우님 <br>
+                                ${member.memberName}님 <br>
                                 반갑습니다
                                 <!-- <article id="login-top-loginBtn">
                                     <input type="submit" value="로그인" id="user-login">
@@ -104,7 +114,7 @@
                             <article id="write">
                                 <article id="korCar">
                                     
-                                    <h3 id="korCarH3" class="sideHtag"> <a href="#">국산차</a></h3>
+                                    <h3 id="korCarH3" class="sideHtag"> 국산차</h3>
                                     <hr>
                                     <ul id="korCarUl">
                                         
@@ -116,7 +126,7 @@
                                 </article>
     
                                 <article id="globalCar">
-                                    <h3 id="korCarH3" class="sideHtag"> <a href="#">수입차</a></h3>
+                                    <h3 id="korCarH3" class="sideHtag"> 수입차</h3>
                                     <hr>
                                     <ul id="korCarUl">
                                         <li> <a href="../category/globalFreeBoard.html" class="sideA">-자유게시판 </a></li>
@@ -127,7 +137,7 @@
                                 </article>
     
                                 <article id="user-park">
-                                    <h3 id="korCarH3" class="sideHtag"> <a href="#">만남의 광장</a></h3>
+                                    <h3 id="korCarH3" class="sideHtag"> 만남의 광장</h3>
                                     <hr>
                                     <ul id="parkCarUl">
                                         <li> <a href="../category/userFreeBoard.html" class="sideA">-자유게시판 </a></li>
@@ -137,7 +147,7 @@
                                     </ul>
                                 </article>
                                 <article id="customer">
-                                    <h3 id="korCarH3" class="sideHtag"> <a href="#">예비 차주</a></h3>
+                                    <h3 id="korCarH3" class="sideHtag"> 예비 차주</h3>
                                     <hr>
                                     <ul id="customerUl">
                                         <li> <a href="../category/lateCarBoard.html" class="sideA">-딜러 매칭 </a></li>
@@ -147,7 +157,7 @@
                                     </ul>
                                 </article>
                                 <article id="user-service">
-                                    <h3 id="korCarH3" class="sideHtag"> <a href="#">고객센터</a></h3>
+                                    <h3 id="korCarH3" class="sideHtag"> 고객센터</h3>
                                    <hr>
                                     <ul id="parkCarUl">
                                         <li> <a href="/notice/list.do?currentPage=1" class="sideA">-공지사항 </a></li>
@@ -171,58 +181,189 @@
                                
                                 <article id="myTitle">
                                 
-                                    <article id="myTitleTag">수입차 - 자유게시판</article>
-                                
+                                    <article id="myTitleTag">국산차 - 자유게시판</article>
+                                    <hr>
                                 </article>
-                                <hr>
-                                <section id="writeTitle">
-                                    <article id="writeTitleText">
-                                        날씨가 좋으니까 오픈하기 좋아요! [2]
-                                    </article>
-                                    <article id="writeTitleDate">
-                                            2023.06.04(일) 17:22
-                                    </article>
-                                </section>
+                                </article>
+                               
+<!--                                 <section id="noticeTable"> -->
+<!--                                     <table border="1"> -->
+<!--                                         <tr> -->
+<!--                                             <th>번호</th> -->
+<!--                                             <th>제목</th> -->
+<!--                                             <th>글쓴이</th> -->
+<!--                                             <th>등록일</th> -->
+<!--                                             <th > -->
+<!--                                                 <select> -->
+<!--                                                     <option value="추천">추천</option> -->
+<!--                                                     <option value="높은순">높은순</option> -->
+<!--                                                     <option value="낮은순">낮은순</option> -->
+<!--                                                 </select> -->
+<!--                                             </th> -->
+<!--                                             <th> -->
+<!--                                                 <select> -->
+<!--                                                     <option value="추천순">조회</option> -->
+<!--                                                     <option value="높은순">높은순</option> -->
+<!--                                                     <option value="낮은순">낮은순</option> -->
+<!--                                                 </select> -->
+<!--                                             </th> -->
+<!--                                         </tr> -->
+<!--                                         <tr> -->
+<!--                                             <td>1</td> -->
+<!--                                             <td><a href="../posting/korFreePosting.html">k3 세차 하고 왔습니다~!</a> [2]</td> -->
+<!--                                             <td>도봉구보안관</td> -->
+<!--                                             <td>2023.06.04</td> -->
+<!--                                             <td>1</td> -->
+<!--                                             <td>5</td> -->
+<!--                                         </tr> -->
+<!--                                         <tr> -->
+<!--                                             <td>2</td> -->
+<!--                                             <td><a href="../posting/korFreePosting.html">  k3 세차 하고 왔습니다~!</a> [2]</td> -->
+<!--                                             <td>도봉구보안관</td> -->
+<!--                                             <td>2023.06.04</td> -->
+<!--                                             <td>1</td> -->
+<!--                                             <td>5</td> -->
+<!--                                         </tr> -->
+<!--                                         <tr> -->
+<!--                                             <td>3</td> -->
+<!--                                             <td><a href="../posting/korFreePosting.html">  k3 세차 하고 왔습니다~!</a> [2]</td> -->
+<!--                                             <td>도봉구보안관</td> -->
+<!--                                             <td>2023.06.04</td> -->
+<!--                                             <td>1</td> -->
+<!--                                             <td>5</td> -->
+<!--                                         </tr> -->
+<!--                                         <tr> -->
+<!--                                             <td>4</td> -->
+<!--                                             <td><a href="../posting/korFreePosting.html">  k3 세차 하고 왔습니다~!</a> [2]</td> -->
+<!--                                             <td>도봉구보안관</td> -->
+<!--                                             <td>2023.06.04</td> -->
+<!--                                             <td>1</td> -->
+<!--                                             <td>5</td> -->
+<!--                                         </tr> -->
+<!--                                         <tr> -->
+<!--                                             <td>5</td> -->
+<!--                                             <td><a href="../posting/korFreePosting.html">  k3 세차 하고 왔습니다~!</a> [2]</td> -->
+<!--                                             <td>도봉구보안관</td> -->
+<!--                                             <td>2023.06.04</td> -->
+<!--                                             <td>1</td> -->
+<!--                                             <td>5</td> -->
+<!--                                         </tr> -->
+<!--                                         <tr> -->
+<!--                                             <td>6</td> -->
+<!--                                             <td><a href="../posting/korFreePosting.html">  k3 세차 하고 왔습니다~!</a> [2]</td> -->
+<!--                                             <td>도봉구보안관</td> -->
+<!--                                             <td>2023.06.04</td> -->
+<!--                                             <td>1</td> -->
+<!--                                             <td>5</td> -->
+<!--                                         </tr> -->
+<!--                                         <tr> -->
+<!--                                             <td>7</td> -->
+<!--                                             <td><a href="../posting/korFreePosting.html">  k3 세차 하고 왔습니다~!</a> [2]</td> -->
+<!--                                             <td>도봉구보안관</td> -->
+<!--                                             <td>2023.06.04</td> -->
+<!--                                             <td>1</td> -->
+<!--                                             <td>5</td> -->
+<!--                                         </tr> -->
+<!--                                         <tr> -->
+<!--                                             <td>8</td> -->
+<!--                                             <td><a href="../posting/korFreePosting.html">  k3 세차 하고 왔습니다~!</a> [2]</td> -->
+<!--                                             <td>도봉구보안관</td> -->
+<!--                                             <td>2023.06.04</td> -->
+<!--                                             <td>1</td> -->
+<!--                                             <td>5</td> -->
+<!--                                         </tr> -->
+<!--                                         <tr> -->
+<!--                                             <td>9</td> -->
+<!--                                             <td><a href="../posting/korFreePosting.html"> k3 세차 하고 왔습니다~!</a> [2]</td> -->
+<!--                                             <td>도봉구보안관</td> -->
+<!--                                             <td>2023.06.04</td> -->
+<!--                                             <td>1</td> -->
+<!--                                             <td>5</td> -->
+<!--                                         </tr> -->
+                                       
+<!--                                         <tr> -->
+<!--                                             <td>10</td> -->
+<!--                                             <td><a href="../posting/korFreePosting.html"> k3 세차 하고 왔습니다~!</a> [2]</td> -->
+<!--                                             <td>도봉구보안관</td> -->
+<!--                                             <td>2023.06.04</td> -->
+<!--                                             <td>1</td> -->
+<!--                                             <td>5</td> -->
+<!--                                         </tr> -->
 
-                                <section id="wrtieMainTag">
-                                    <section id="writeMainTop">
-                                        <article id="topImg">
-                                            <img src="../resources/image/001.jpg" alt="writeImg" width="60%">
-                                        </article>
-                                        <article id="topTitle">
-                                            <h6>닉네임 : 도봉구보안관</h6>
-                                            <h6>등급 : 소형</h6>
-                                        </article>
-                                        <article id="writeAll">
-                                                댓글:2 추천:1 조회:5
-                                        </article>
-                                </section>
-                                <section id="writeMaincenter">
-                                    <article id="writeP">
-                                                <img src="../resources/image/globalfree.jpg" width="50%" alt="globfree">
-                                               <pre>  날씨가 좋으니까 오픈하고 드라이브하기 좋네요 ㅎㅎ
-  바람도 적당히 불어주고! 오픈에어링 하기 딱입니다!
-  장마가 오지 않았으면 좋겠습니다 ㅋㅋ ㅜㅜ</pre>
-                                            </article>
-                                    <article id="writegood">
-                                        <button id="writeGoodBtn">추천 1</button>
-                                    </article>
-                                    <article id="writeBtn">
-                                        <button id="writeChange">수정</button>
-                                        <button id="writeRemove">삭제</button>
-                                    </article>
-                                </section>
-                                <section id="writeMainFooter">
-                                    <article id="comment1">
-                                        종로구보안관 : 지금 오픈하기 딱이죠!!
-                                    </article>
-                                    <article id="comment2">
-                                        강북구보안관 : 얼른 누리세요!! 곧 장마입니다 ㅠ
-                                    </article>
-                                    <article id="commentAdd">
-                                        댓글 <input type="text" name="comment" id="comment" placeholder="댓글을 입력해주세요."> <button>등록</button>
-                                    </article>
-                                </section>
+
+<!--                                     </table> -->
+<table>
+		<colgroup>
+			<col width="12%">
+			<col width="55%">
+			<col width="15%">
+			<col width="10%">
+			<col width="10%">
+		</colgroup>
+		<thead>
+			<tr id ="toptr">
+				<th>글번호</th>
+				<th>글제목</th>
+				<th>글쓴이</th>
+				<th>작성일</th>
+				<th>조회수</th>
+			</tr>
+		</thead>
+		
+		<tbody>
+			<!-- 		for(Notice notice : nList) -->
+		<c:forEach items="${requestScope.sList}" var="notice">
+				<tr>
+					<td>${notice.korFreeBoardNo}</td>
+<!-- 					?는 키값을 넘겨주는거임 -->
+					<td><a href="/korboard/detail.do?korFreeBoardNo=${notice.korFreeBoardNo}"> ${notice.korFreeBoardSubject } </a></td>
+					<td>${notice.korFreeBoardWriter}</td>
+					<td>${notice.korFreeBoardDate }</td>
+					<td>${notice.korFreeBoardView }</td>
+				</tr>
+
+			</c:forEach>
+			<tr align="center">
+				<td colspan="5"><c:forEach begin="${pInfo.startNavi}"
+						end="${pInfo.endNavi}" var="p">
+						<c:url var="pageUrl" value="/notice/KorFreelist.do">
+							<c:param name="page" value="${p}"></c:param>
+						</c:url>
+						<a href="${pageUrl}">${p}</a> &nbsp;
+					</c:forEach></td>
+			</tr>
+
+
+
+		</tbody>
+
+	</table>
+<!-- 	</section> -->
+<!--                                      </section> -->
+                                    
+                                        <section id="noticeBtn">
+<!--                                                 <button class="numberBtn" id="noticeBtn1"><</button> -->
+<!--                                                 <button class="numberBtn" id="noticeBtn2">1</button>  -->
+<!--                                                 <button class="numberBtn" id="noticeBtn3">2</button>  -->
+<!--                                                 <button class="numberBtn" id="noticeBtn4">3</button>  -->
+<!--                                                 <button class="numberBtn" id="noticeBtn5">4</button>  -->
+<!--                                                 <button class="numberBtn" id="noticeBtn6">></button> -->
+                                                <button id="noticeBtn7"> <a href ="/write/korFree.do?memberName= ${memberName}"> 글쓰기 </a></button> 
+                                        </section>
+                                        
+                                    
+                                        <section id="noticesearch">
+                                        <form action="/korboard/search.do" method="post" id="searchForm">
+						<select name="searchCondiition" class="searchTag">
+                                              	<option value="all">전체</option>
+							<option value="writer">작성자</option>
+							<option value="title">제목</option>
+							<option value="content">내용</option>
+						</select>
+                                            <input type="text" name="searchKeyword" id="searchText" placeholder="검색어를 입력하세요.">
+                                            <button id="noticeSerachBtn">검색</button>
+                                        </section>
+                                    </section>
                             </section>
                         </main>
                             <!-- 맨 오른쪽 베스트 게시물 게시판 -->
@@ -234,6 +375,7 @@
 
                             </article> -->
                         </section>
+                        
             </main>
             <footer id="footer">
                 <section id="footer-left">
@@ -250,24 +392,31 @@
     </div>
 
     <script>
-             var sum=1;
-            document.querySelector("#writeGoodBtn").addEventListener("click",()=>{
-                if(sum==2){
-                    alert("추천은 한번만 가능합니다.")
-                    return false;
-                }
-                sum++
-                document.querySelector("#writeGoodBtn").innerText="추천 "+sum;
+            
+            document.querySelector("#noticeBtn7").addEventListener("click",()=>{
+                location.href="/write/korFree.do?memberName= ${memberName}"
             })
-            document.querySelector("#writeRemove").addEventListener("click",()=>{
-                var answer = confirm("정말 삭제하시겠습니까?");
 
-                if(answer !=true){
-                    alert("취소하셨습니다.")
-                }else (alert("삭제 기능은 구현하지 않았습니다.."))
+            document.querySelector("#noticeBtn1").addEventListener("click",()=>{
+                location.href="#"
             })
-            document.querySelector("#writeChange").addEventListener("click",()=>{
-                location.href="../postingchange/globalFree.html"
+            document.querySelector("#noticeBtn2").addEventListener("click",()=>{
+                location.href="#"
+            })
+            document.querySelector("#noticeBtn3").addEventListener("click",()=>{
+                location.href="#"
+            })
+            document.querySelector("#noticeBtn4").addEventListener("click",()=>{
+                location.href="#"
+            })
+            document.querySelector("#noticeBtn5").addEventListener("click",()=>{
+                location.href="#"
+            })
+            document.querySelector("#noticeBtn6").addEventListener("click",()=>{
+                location.href="#"
+            })
+            document.querySelector("#noticeSerachBtn").addEventListener("click",()=>{
+                alert("검색 기능은 업데이트 예정입니다. - 카뮤니티")
             })
 
         var count =1;
@@ -429,6 +578,6 @@
                 document.querySelector("#csnotice").style.display = "none";}
     }
 
-    </script>
+   </script>
     </body>
 </html>   

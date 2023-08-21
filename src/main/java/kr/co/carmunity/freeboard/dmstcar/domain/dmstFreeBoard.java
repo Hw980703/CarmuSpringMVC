@@ -11,13 +11,47 @@ public class dmstFreeBoard {
 	private int korFreeBoardGood;
 	private int korFreeBoardView;
 	private int korFreeBoardComment;
+	private String korFreeBoardFilename;
+	private String korFreeBoardFilepath;
+	private long  korFreeBoardFilelength;
 	
 	
 	
 
+	public dmstFreeBoard() {
+		super();
+	}
+
+	public String getKorFreeBoardFilename() {
+		return korFreeBoardFilename;
+	}
+
+	public void setKorFreeBoardFilename(String korFreeBoardFilename) {
+		this.korFreeBoardFilename = korFreeBoardFilename;
+	}
+
+	public String getKorFreeBoardFilepath() {
+		return korFreeBoardFilepath;
+	}
+
+	public void setKorFreeBoardFilepath(String korFreeBoardFilepath) {
+		this.korFreeBoardFilepath = korFreeBoardFilepath;
+	}
+
+	public long getKorFreeBoardFilelength() {
+		return korFreeBoardFilelength;
+	}
+
+	public void setKorFreeBoardFilelength(long korFreeBoardFilelength) {
+		this.korFreeBoardFilelength = korFreeBoardFilelength;
+	}
+
+
+
 	public dmstFreeBoard(int korFreeBoardNo, String korFreeBoardSubject, String korFreeBoardContent,
 			String korFreeBoardWriter, Date korFreeBoardDate, int korFreeBoardGood, int korFreeBoardView,
-			int korFreeBoardComment) {
+			int korFreeBoardComment, String korFreeBoardFilename, String korFreeBoardFilepath,
+			long korFreeBoardFilelength) {
 		super();
 		this.korFreeBoardNo = korFreeBoardNo;
 		this.korFreeBoardSubject = korFreeBoardSubject;
@@ -27,6 +61,9 @@ public class dmstFreeBoard {
 		this.korFreeBoardGood = korFreeBoardGood;
 		this.korFreeBoardView = korFreeBoardView;
 		this.korFreeBoardComment = korFreeBoardComment;
+		this.korFreeBoardFilename = korFreeBoardFilename;
+		this.korFreeBoardFilepath = korFreeBoardFilepath;
+		this.korFreeBoardFilelength = korFreeBoardFilelength;
 	}
 
 	public dmstFreeBoard(int korFreeBoardNo, String korFreeBoardSubject, String korFreeBoardContent) {

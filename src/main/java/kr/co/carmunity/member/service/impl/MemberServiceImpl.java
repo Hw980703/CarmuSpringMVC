@@ -39,8 +39,10 @@ public class MemberServiceImpl implements MemberService{
 
 	@Override
 	public int deleteMember(String memberId) {
-		// TODO Auto-generated method stub
-		return 0;
+		
+		int result = mStore.deleteMember(sqlSession, memberId);
+		
+		return result;
 	}
 
 	@Override

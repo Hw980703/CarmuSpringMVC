@@ -172,13 +172,13 @@
                                 <article id="loginTagMain">
                                     <form action = "/member/login.do" method="post"> 
                                     <article class= "loginMain" id="loginId">
-                                    <button class="infoBtn"> ID </button> <input class="infoInput" type="text" name="userId" id="userId" placeholder="아이디를 입력하세요">
+                                    <button class="infoBtn" disabled> ID </button> <input class="infoInput" type="text" name="userId" id="userId" placeholder="아이디를 입력하세요">
                                     </article>
                                     <article class= "loginMain" id="loginPw">
-                                        <button class="infoBtn"> PW </button> <input class="infoInput" type="text" name="userPw" id="userPw" placeholder="비밀번호를 입력하세요">
+                                        <button class="infoBtn" disabled> PW </button> <input class="infoInput" type="text" name="userPw" id="userPw" placeholder="비밀번호를 입력하세요">
                                     </article>
                                     <article class= "loginMain" id="loginBtn">
-                                        <button class="infoBtn" id="loginBtnTag"> <input type="submit" value = "LOGIN">  </button> 
+                                        <button class="infoBtn" id="loginBtnTag" disabled> <input type="submit" value = "LOGIN" id="loginBtnTag">  </button> 
                                         </form>
                                     </article>
                                     <article class= "loginMain" id="loginFooter">

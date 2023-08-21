@@ -27,7 +27,7 @@
                         <ul id="menuUl">
                             <li class="menuClass">김현우님</li> 
                             <li class="menuClass" > <a href="/member/mypage.do">MY </a></li>
-                            <li class="menuClass"> <a href="/member/myInfo.do">정보수정 </a> </li>
+                            <li class="menuClass"> <a href="/member/info.do">정보수정 </a> </li>
                             <li class="menuClass" id="menuMy" >  <a href="#"> <span id="menuMy2" onclick ="csnoticeTag()" >알림 </span>  </a></li>
                            
                         </ul>
@@ -60,7 +60,7 @@
                         <article  class = "navaCtegory" id="userCategory">    <a href="../category/userFreeBoard.html">자유게시판</a> <a href="../category/userQnaBoard.html"><br>질문 게시판       </a> <br> <a href="../category/userBestBoard.html">베스트 인기 게시물     </a></article>
                         <article  class = "navaCtegory" id="lateCategory">    <a href="../category/lateCarBoard.html">딜러 매칭 </a> <a href="../category/latePriceBoard.html"><br> 견적 문의</a></article>
                         <article  class = "navaCtegory" id="serviceCategory"> <a href="/notice/list.do?currentPage=1">공지사항  </a> <a href="../userService/qna.html"><br> 1대1 문의        </a> <br> <a href="../userService/serviceMain.html">건의/신고</a></article>
-                        <article  class = "navaCtegory" id="myCategory">      <a href="/member/myInfo.do">정보 수정 </a> <a href="../userService/serviceMain.html"> <br> 고객센터</a></article>
+                        <article  class = "navaCtegory" id="myCategory">      <a href="/member/info.do">정보 수정 </a> <a href="../userService/serviceMain.html"> <br> 고객센터</a></article>
                 </section>
                 </nav>
             </header>
@@ -90,7 +90,7 @@
                         <section id="login-bottom">
                             <article id="login-bottom-footer">
                                 <ul id="footer-ul">
-                                    <div id=footer-IDPW><li> <a href="/member/myInfo.do">내 정보수정</a></li></div>
+                                    <div id=footer-IDPW><li> <a href="/member/info.do">내 정보수정</a></li></div>
                                     <div id=footer-signUp><li> <a href="/index.jsp">로그아웃 </a></li></div>
                                 </ul>
                             </article>

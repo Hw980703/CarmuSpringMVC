@@ -24,7 +24,7 @@
                     <article id="menuTag">
                         <ul id="menuUl">
                       <li class="menuClass"> <a href="/member/login.do" >로그인 </a></li>
-                             <li class="menuClass"> <a href="./user/idGet.html" >ID/PW찾기 </a></li>
+                             <li class="menuClass"> <a href="/member/getUserInfo.do" >ID/PW찾기 </a></li>
               <li class="menuClass"> <a href="/member/register.do">회원가입 </a> </li> 
                             <li class="menuClass" id="menuMy">  <a href="./user/login.html"> 마이페이지 </a></li>
                         </ul>
@@ -81,7 +81,7 @@
 	                            <section id="login-bottom">
 	                                <article id="login-bottom-footer">
 	                                    <ul id="footer-ul">
-	                                        <div id=footer-IDPW><li> <a href="./user/idGet.html">ID/PW 찾기 I</a></li></div>
+	                                        <div id=footer-IDPW><li> <a href="/member/getUserInfo.do">ID/PW 찾기 I</a></li></div>
 	                                   <div id=footer-signUp><li> <a href="/member/register.do">회원가입  </a></li></div> 
 	                                    </ul>
 	                                </article>

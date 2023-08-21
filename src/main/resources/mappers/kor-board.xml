@@ -14,9 +14,12 @@
 		<result property="korFreeBoardGood" column="NOTICE_GOOD" />
 		<result property="korFreeBoardView" column="NOTICE_VIEW" />
 		<result property="korFreeBoardComment" column="NOTICE_COMMENT" />
+		<result property="korFreeBoardFilename" column="NOTICE_FILENAME" />
+		<result property="korFreeBoardFilepath" column="NOTICE_FILEPATH" />
+		<result property="korFreeBoardFilelength" column="NOTICE_FILELENGTH" />
 	</resultMap>
   <insert id="writeKorFree">
-  	INSERT INTO korFreeBoard_TBL VALUES(SEO_NOTICENO.NEXTVAL,#{korFreeBoardSubject},#{korFreeBoardContent},#{korFreeBoardWriter},DEFAULT,DEFAULT,DEFAULT,DEFAULT)
+  	INSERT INTO korFreeBoard_TBL VALUES(SEO_NOTICENO.NEXTVAL,#{korFreeBoardSubject},#{korFreeBoardContent},#{korFreeBoardWriter},DEFAULT,DEFAULT,DEFAULT,DEFAULT,#{korFreeBoardFilename},#{korFreeBoardFilepath},#{korFreeBoardFilelength})
   </insert>
   
    
@@ -43,6 +46,41 @@
 	
 		<select id="korFreeAllSelect" resultMap="korFreeResultMaps">
 		SELECT * FROM korFreeBoard_TBL
+	</select>
+	<select id="selectListByKewordCount" resultType="_int">
+	
+		SELECT COUNT(*) FROM korFreeBoard_TBL
+		<if test="searchCondition == 'all'">
+			WHERE NOTICE_SUBJECT LIKE '%'||#{searchKeyword}||'%'OR NOTICE_CONTENT LIKE
+			'%'||#{searchKeyword}||'%'
+		</if>
+		<if test="searchCondition == 'writer'">
+			WHERE NOTICE_WRITER LIKE '%'||#{searchKeyword}||'%'
+		</if>
+		<if test="searchCondition == 'content'">
+			WHERE NOTICE_CONTENT LIKE '%'||#{searchKeyword}||'%'
+		</if>
+		<if test="searchCondition == 'title'">
+			WHERE NOTICE_SUBJECT LIKE '%'||#{searchKeyword}||'%'
+		</if>
+		
+	</select>
+	
+		<select id="selectNoticeByKeyword" resultMap="korFreeResultMaps">
+		SELECT * FROM korFreeBoard_TBL
+		<if test="searchCondition == 'all'">
+			WHERE NOTICE_SUBJECT LIKE '%'||#{searchKeyword}||'%'OR NOTICE_CONTENT LIKE
+			'%'||#{searchKeyword}||'%'
+		</if>
+		<if test="searchCondition == 'writer'">
+			WHERE NOTICE_WRITER LIKE '%'||#{searchKeyword}||'%'
+		</if>
+		<if test="searchCondition == 'content'">
+			WHERE NOTICE_CONTENT LIKE '%'||#{searchKeyword}||'%'
+		</if>
+		<if test="searchCondition == 'title'">
+			WHERE NOTICE_SUBJECT LIKE '%'||#{searchKeyword}||'%'
+		</if>
 	</select>
   
   </mapper>

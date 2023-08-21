@@ -1,6 +1,9 @@
 package kr.co.carmunity.freeboard.dmstcar.controller;
 
+import java.io.File;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -8,15 +11,17 @@ import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
-
+import org.springframework.web.multipart.MultipartFile;
 
 import kr.co.carmunity.freeboard.dmstcar.domain.PageInfo;
 import kr.co.carmunity.freeboard.dmstcar.domain.dmstFreeBoard;
 import kr.co.carmunity.freeboard.dmstcar.service.dmstService;
 import kr.co.carmunity.member.domain.Member;
+import kr.co.carmunity.notice.domain.Notice;
 
 @Controller
 public class DmstcarFreeBoard {
@@ -25,20 +30,49 @@ public class DmstcarFreeBoard {
 	dmstService service;
 		
 	@RequestMapping(value="/write/korFree.do",method=RequestMethod.GET)
-	public String ShowFreeBoardWrite(@RequestParam("memberName")String memberName,Model model) {
+	public String ShowFreeBoardWrite() {
 		
-		model.addAttribute("memberName",memberName);
+	
 		return "writing/korfreew";
 		
 	}
 	@RequestMapping(value="/write/korFree.do",method=RequestMethod.POST)
-	public String FreeBoardWrite(@RequestParam("memberName")String memberName,
-			@RequestParam("writeTitle")String writeTitle,@RequestParam("noticeContent")String noticeContent
-			,Model model) {
+	public String FreeBoardWrite(@ModelAttribute dmstFreeBoard dmst
+			,@RequestParam(value = "uploadFile", required = false) MultipartFile uploadFile, HttpServletRequest request,Model model) {
 		
 		try {
-			dmstFreeBoard dsmt = new dmstFreeBoard(writeTitle, noticeContent, memberName);
-			int result = service.korFreeWrite(dsmt);
+			
+			if (!uploadFile.getOriginalFilename().equals("")) {
+				// **********************파일 이름*************************
+				String fileName = uploadFile.getOriginalFilename();
+				// 파일 경로 ( 내가 저장한 후 그 경로를 DB에 저장하도록 준비하는 것)
+
+				// 파일 경로는 request 통해서 가져옴, HttpServletRequest 씀
+				// resources 폴더의 경로를 알 수 있음 = /IngSpringMVC/src/main/webapp/resources
+				String root = request.getSession().getServletContext().getRealPath("resources");
+
+				// 폴더가 없을 경우 자동 생성 (내가 업로드 한 파일을 저장할 폴더)
+				String saveFolder = root + "\\nuploadFiles";
+//				String saveFolder = root + File.separator + "nuploadFiles";
+				File folder = new File(saveFolder);
+				if (!folder.exists()) {
+					folder.mkdir();
+				}
+//				*************** 파일 경로 **********************
+				String savePath = saveFolder + "\\" + fileName;
+				File file = new File(savePath);
+				// *************파일 저장 ******************
+				uploadFile.transferTo(file);
+				// ********************파일 크기 **********************
+				long fileLength = uploadFile.getSize();
+
+//				************** DB에 저장하기 위해 notice에 데이터를 Set 하는 부분임.
+				dmst.setKorFreeBoardFilename(fileName);
+				dmst.setKorFreeBoardFilepath(savePath);
+				dmst.setKorFreeBoardFilelength(fileLength);
+			}
+			
+			int result = service.korFreeWrite(dmst);
 			
 			if(result > 0) {
 				
@@ -225,4 +259,59 @@ public class DmstcarFreeBoard {
 			return "common/errorPage";		}
 		
 	}
+	
+	@RequestMapping(value = "/korboard/search.do", method = RequestMethod.POST)
+	public String searchNotice(@RequestParam(value = "page", required = false, defaultValue = "1") Integer curruntPage,
+			@RequestParam("searchCondiition") String searchCondiition,
+			@RequestParam("searchKeyword") String searchKeyword, Model model) {
+
+		Map<String, String> paramMap = new HashMap<String, String>();
+		paramMap.put("searchCondition", searchCondiition);
+		paramMap.put("searchKeyword", searchKeyword);
+		int totalCount = service.getListCount(paramMap);
+		PageInfo pInfo = this.getPageInfo(curruntPage, totalCount);
+
+		List<dmstFreeBoard> searchList = service.searchNoticeByKeyword(pInfo, paramMap);
+
+		// switch 문이 mapper 들어갔음
+		// switch(searchCondiition) {
+//		case "all" : 
+//		searchList = service.searchNoticeAll(searchKeyword,pInfo);
+//		break;
+//		case "writer" :
+//			searchList = service.searchNoticeByWriter(searchKeyword,pInfo);
+//			break;
+//		case "title" : 
+//		searchList = service.searchNoticeByTitle(searchKeyword,pInfo);
+//			
+//			break;
+//		case "content" :
+//			searchList = service.searchNoticeByContent(searchKeyword,pInfo);
+//			break;
+//		
+//		
+//		}
+		try {
+			if (!searchList.isEmpty()) {
+
+				model.addAttribute("searchCondition", searchCondiition);
+				model.addAttribute("searchKeyword", searchKeyword);
+				model.addAttribute("pInfo", pInfo);
+				model.addAttribute("sList", searchList);
+				return "category/korFreeSearchBoard";
+			} else {
+				model.addAttribute("error", "관리자 문의");
+				model.addAttribute("msg", "실패함 ㅋㅋ");
+				model.addAttribute("url", "/notice/list.kh");
+				return "redirect:/notice/KorFreelist.do";
+			}
+
+		} catch (Exception e) {
+			model.addAttribute("error", "관리자 문의");
+			model.addAttribute("msg", e.getMessage());
+			model.addAttribute("url", "/main/main_member.jsp");
+			return "common/errorPage";
+		}
+	}
+	
 }

@@ -7,13 +7,13 @@
 <title>에러 페이지</title>
 </head>
 <body>
-	<h1>${error}</h1>
-	<a href="${url}"> 페이지 이동</a>
+
 
 	<script>
 		const msg = "${msg}";
 		if(msg != ""){
 			alert(msg);
+			location.href="${url}";
 		}
 	
 	</script>

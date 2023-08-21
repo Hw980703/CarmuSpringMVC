@@ -85,7 +85,7 @@
 						href="../userService/serviceMain.html">건의/신고</a>
 				</article>
 				<article class="navaCtegory" id="myCategory">
-					<a href="/member/myInfo.do">정보 수정 </a> <a
+					<a href="/member/info.do">정보 수정 </a> <a
 						href="../userService/serviceMain.html"> <br> 고객센터
 					</a>
 				</article>

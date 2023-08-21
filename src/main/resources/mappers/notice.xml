@@ -33,5 +33,41 @@
   <select id="selectNoticeCount" resultType="_int">
 		SELECT COUNT(*) FROM NOTICE_TBL
 	</select>
+	
+	<select id="selectListByKewordCount" resultType="_int">
+	
+		SELECT COUNT(*) FROM NOTICE_TBL
+		<if test="searchCondition == 'all'">
+			WHERE NOTICE_SUBJECT LIKE '%'||#{searchKeyword}||'%'OR NOTICE_CONTENT LIKE
+			'%'||#{searchKeyword}||'%'
+		</if>
+		<if test="searchCondition == 'writer'">
+			WHERE NOTICE_WRITER LIKE '%'||#{searchKeyword}||'%'
+		</if>
+		<if test="searchCondition == 'content'">
+			WHERE NOTICE_CONTENT LIKE '%'||#{searchKeyword}||'%'
+		</if>
+		<if test="searchCondition == 'title'">
+			WHERE NOTICE_SUBJECT LIKE '%'||#{searchKeyword}||'%'
+		</if>
+		
+	</select>
+	
+	<select id="selectNoticeByKeyword" resultMap="MainNoticeResultMaps">
+		SELECT * FROM NOTICE_TBL
+		<if test="searchCondition == 'all'">
+			WHERE NOTICE_SUBJECT LIKE '%'||#{searchKeyword}||'%'OR NOTICE_CONTENT LIKE
+			'%'||#{searchKeyword}||'%'
+		</if>
+		<if test="searchCondition == 'writer'">
+			WHERE NOTICE_WRITER LIKE '%'||#{searchKeyword}||'%'
+		</if>
+		<if test="searchCondition == 'content'">
+			WHERE NOTICE_CONTENT LIKE '%'||#{searchKeyword}||'%'
+		</if>
+		<if test="searchCondition == 'title'">
+			WHERE NOTICE_SUBJECT LIKE '%'||#{searchKeyword}||'%'
+		</if>
+	</select>
   
     </mapper>

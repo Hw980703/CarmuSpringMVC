@@ -17,8 +17,10 @@ public class MemberStoreLogic implements MemberStore {
 
 	@Override
 	public int deleteMember(SqlSession session, String memberId) {
-		// TODO Auto-generated method stub
-		return 0;
+		
+		int result = session.delete("memberMappers.memberDelete",memberId);
+		
+		return result;
 	}
 
 	@Override

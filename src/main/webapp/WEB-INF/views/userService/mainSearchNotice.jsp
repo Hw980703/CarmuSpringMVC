@@ -17,8 +17,7 @@
 		border-collapse : collapse;
 	}
 	th,td {
-/* 	border : 1px solid black; */
-text-align: center;
+	border : 1px solid black;
 	}
 	
 </style>
@@ -280,7 +279,7 @@ text-align: center;
 						</thead>
 						<tbody>
 							<!-- 		for(Notice notice : nList) -->
-							<c:forEach items="${requestScope.nList}" var="notice">
+							<c:forEach items="${requestScope.sList}" var="notice">
 								<tr>
 									<td>${notice.noticeNo}</td>
 									<!-- 					?는 키값을 넘겨주는거임 -->

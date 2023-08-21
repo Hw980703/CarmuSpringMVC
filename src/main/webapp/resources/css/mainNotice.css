@@ -17,6 +17,13 @@
 /* 		border : 1px solid black; */
 		border-collapse : collapse;
 	}
+	#searchForm{
+		display: flex;
+		justify-content: center;
+	}
+	
+	.searchTag{
+	margin:0px;}
 	th,td:not(#pageTd) {
 	border-bottom : 1px solid black;
 	}

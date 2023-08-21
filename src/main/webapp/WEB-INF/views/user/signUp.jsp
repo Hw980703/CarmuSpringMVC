@@ -168,27 +168,28 @@
                                             <article id="signText"> 회원가입</article> <hr>
                                             <section id="signInfo">
                                             <form action = "/member/register.do" method="post" > 
-                                                    <span class="signEmTx">이메일은 @을 포함하여 작성해주세요.</span><article class = "signInfoTag"id="signTag1"> <button class="signButton" >이메일</button>
-                                                    <input  class="signInput" type="text" name="user-email" id="user-email" placeholder="이메일을 입력하세요."> 
+<!--                                                     <span class="signEmTx">이메일은 @을 포함하여 작성해주세요.</span> -->
+                                                    <article class = "signInfoTag"id="signTag1"> <button class="signButton" disabled >이메일</button>
+                                                    <input  class="signInput" type="text" name="user-email" id="user-email" placeholder="이메일은 @을 포함하여 작성해주세요."> 
                                               </article>
-                                                          <span class="signEmTx">아이디는 영문+숫자 6자~10자 사이로 입력해주세요.</span>  
-                                                <article class = "signInfoTag"id="signTag2"><button class="signButton" >ID</button>
-                                                    <input  class="signInput" type="text" name="user-id" id="user-id1" placeholder="아이디를 입력하세요."> </article>
-                                                     <span class="signEmTx">비밀번호는 숫자 6자~10자 사이로 입력해주세요.</span>
-                                                <article class = "signInfoTag"id="signTag3"><button class="signButton" >PW</button>
-                                                    <input  class="signInput" type="text" name="user-p2" id="user-pw2" placeholder="비밀번호를 입력하세요." ></article>
-                                                   <span class="signEmTx">비밀번호를 재입력해서 확인해주세요.</span>
-                                                    <article class = "signInfoTag"id="signTag4"><button class="signButton" >re : PW</button>
-                                                    <input  class="signInput" type="text" name="user-pw3" id="user-pw3" placeholder="비밀번호를 재입력하세요." ></article>
-                                                 <span class="signEmTx">닉네임을 설정해주세요.</span>
-                                                    <article class = "signInfoTag"id="signTag5"><button class="signButton" >닉네임</button>
+<!--                                                           <span class="signEmTx">아이디는 영문+숫자 6자~10자 사이로 입력해주세요.</span>   -->
+                                                <article class = "signInfoTag"id="signTag2"><button class="signButton" disabled  >ID</button>
+                                                    <input  class="signInput" type="text" name="user-id" id="user-id1" placeholder="아이디는 영문+숫자 6자~10자 사이로 입력해주세요."> </article>
+<!--                                                      <span class="signEmTx">비밀번호는 숫자 6자~10자 사이로 입력해주세요.</span> -->
+                                                <article class = "signInfoTag"id="signTag3"><button class="signButton" disabled >PW</button>
+                                                    <input  class="signInput" type="text" name="user-p2" id="user-pw2" placeholder="비밀번호는 숫자 6자~10자 사이로 입력해주세요." ></article>
+<!--                                                    <span class="signEmTx">비밀번호를 재입력해서 확인해주세요.</span> -->
+                                                    <article class = "signInfoTag"id="signTag4"><button class="signButton" disabled  >re : PW</button>
+                                                    <input  class="signInput" type="text" name="user-pw3" id="user-pw3" placeholder="비밀번호를 재입력해서 확인해주세요." ></article>
+<!--                                                  <span class="signEmTx">닉네임을 설정해주세요.</span> -->
+                                                    <article class = "signInfoTag"id="signTag5"><button class="signButton" disabled >닉네임</button>
                                                 
                                                     <input  class="signInput" type="text" name="user-nic" id="user-nic" placeholder="최대 한글 6자리 닉네임을 입력하세요." ></article>
-                                                    <span class="signEmTx">이름을 입력해주세요.</span>
-                                                    <article class = "signInfoTag"id="signTag6"><button class="signButton" >이름</button>
+<!--                                                     <span class="signEmTx">이름을 입력해주세요.</span> -->
+                                                    <article class = "signInfoTag"id="signTag6"><button class="signButton" disabled >이름</button>
                                                     <input  class="signInput" type="text" name="user-name" id="user-name1" placeholder="이름을 입력하세요." ></article>
-                                                   <span class="signEmTx">전화번호를 입력해주세요.</span>
-                                                    <article class = "signInfoTag"id="signTag7"><button class="signButton" >TEL</button>
+<!--                                                    <span class="signEmTx">전화번호를 입력해주세요.</span> -->
+                                                    <article class = "signInfoTag"id="signTag7"><button class="signButton" disabled >TEL</button>
                                                     <input  class="signInput" type="text" name="user-tel1" id="user-tel1" placeholder="하이픈(-) 제외 전화번호를 입력하세요." ></article>
                                                     
                                                     <article class = "signInfoTag"id="signTag8">

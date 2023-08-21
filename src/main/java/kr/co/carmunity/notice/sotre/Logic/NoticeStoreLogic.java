@@ -1,6 +1,7 @@
 package kr.co.carmunity.notice.sotre.Logic;
 
 import java.util.List;
+import java.util.Map;
 
 import org.apache.ibatis.session.RowBounds;
 import org.apache.ibatis.session.SqlSession;
@@ -73,6 +74,26 @@ int result = session.selectOne("noticeMapper.selectNoticeCount");
 		int result = session.update("noticeMapper.updateNotice",notice);
 		
 		return result;
+	}
+
+	@Override
+	public int selectListCount(SqlSession session, Map<String, String> paramMap) {
+	int result = session.selectOne("noticeMapper.selectListByKewordCount",paramMap);
+		
+		return result;
+	}
+
+	@Override
+	public List<Notice> searchNoticeByKeyword(SqlSession session, PageInfo pInfo, Map<String, String> paramMap) {
+		// TODO Auto-generated method stub
+		
+		int limit = pInfo.getRecordCountPerPage();
+		int offset = (pInfo.getCurruntPage()-1)*limit;
+		
+		RowBounds rowbounds = new RowBounds(offset, limit);
+		List<Notice> nList = session.selectList("noticeMapper.selectNoticeByKeyword",paramMap,rowbounds);
+		
+		return nList;
 	}
 
 }
