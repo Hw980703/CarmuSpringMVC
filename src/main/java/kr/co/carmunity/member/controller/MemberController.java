@@ -138,6 +138,10 @@ public class MemberController {
 			String[] nic = nicName.split("");
 			if (nic.length > 6) {
 				nicName = member.getMemberNicName();
+				model.addAttribute("error", "닉네임 변경 실패.");
+				model.addAttribute("msg", "닉네임 변경 실패(최대 6자리로 변경해주세요.)");
+				model.addAttribute("url", "/member/info.do");
+				return "common/errorPage";
 			}
 			member.setMemberNicName(nicName);
 			int result = service.nicupdateMember(member);
@@ -146,8 +150,8 @@ public class MemberController {
 				return "user/info";
 
 			} else {
-				model.addAttribute("error", "회원정보 수정 실패.");
-				model.addAttribute("msg", "회원정보 수정 실패");
+				model.addAttribute("error", "닉네임 변경 실패.");
+				model.addAttribute("msg", "닉네임 변경 실패");
 				model.addAttribute("url", "/member/info.do");
 				return "common/errorPage";
 
@@ -166,8 +170,11 @@ public class MemberController {
 	public String phoneChange1(@RequestParam("userPhone") String newPhoneNumber, Model model) {
 
 		try {
-			if (newPhoneNumber != "") {
-
+			String[] phones = newPhoneNumber.split("");
+//			long phone = Integer.parseInt(newPhoneNumber) ;
+			
+			if (!newPhoneNumber.isEmpty() && phones.length == 11 ) {
+				
 				HttpSession session = request.getSession();
 				Member member = (Member) session.getAttribute("member");
 				String phoneNumber = member.getMemberPhone();
@@ -195,7 +202,7 @@ public class MemberController {
 
 	@RequestMapping(value = "/member/phoneChange.do", method = RequestMethod.POST)
 	public String phoneChange2(@RequestParam("userPhoneChec") String checkNum,
-			@RequestParam("newPhone") String newPhone, @RequestParam("number") String number) {
+			@RequestParam("newPhone") String newPhone, @RequestParam("number") String number,Model model) {
 
 		HttpSession session = request.getSession();
 		if (checkNum.equals(number)) {
@@ -203,11 +210,16 @@ public class MemberController {
 			Member member = (Member) session.getAttribute("member");
 			member.setMemberPhone(newPhone);
 			int result = service.phoneUpdate(member);
-			return "user/info";
+			model.addAttribute("msg", "전화번호 변경완료");
+			model.addAttribute("url", "/member/info.do");
+			return "common/serviceSuccess";
 		} else {
 //			수정 실패
 
-			return "user/infoChange";
+			model.addAttribute("error", "전화번호 변경 실패");
+			model.addAttribute("msg", "전화번호 변경 실패");
+			model.addAttribute("url", "/member/info.do");
+			return "common/errorPage";
 		}
 
 	}
@@ -225,7 +237,11 @@ public class MemberController {
 				// 성공
 				member.setMemberPw(memberNewPw);
 				int result = service.pwChange(member);
-				model.addAttribute("msg", "[변경완료]");
+				model.addAttribute("msg", "변경완료");
+				model.addAttribute("url", "/member/info.do");
+				return "common/serviceSuccess";
+				
+				
 
 			} else {
 				model.addAttribute("error", "회원탈퇴 실패");
@@ -243,7 +259,6 @@ public class MemberController {
 			return "common/errorPage";
 		}
 
-		return "user/infoChange";
 	}
 
 	@RequestMapping(value = "/member/emailChange.do", method = RequestMethod.POST)

@@ -45,7 +45,7 @@
 	</select>
 	
 		<select id="korFreeAllSelect" resultMap="korFreeResultMaps">
-		SELECT * FROM korFreeBoard_TBL
+		SELECT * FROM korFreeBoard_TBL ORDER BY NOTICE_NO DESC
 	</select>
 	<select id="selectListByKewordCount" resultType="_int">
 	

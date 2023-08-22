@@ -10,13 +10,21 @@
                 font-family: 'Noto Sans KR', sans-serif;
             
             }
+            #postingNo{
+            margin: 0px;
+            width: 30px;
+            border-style: none;
+            }
             #csnotice{
                 position: relative;
                 z-index: 10;
                 left: 150px;
                 display: none;
             }
-        
+        	#changeBtn{
+        		border-style: none;
+        		background-color: #ccc;
+        	}
             div{
                 --border : 1px solid black;
                 width: 1200px;
@@ -617,7 +625,7 @@
                                 display: flex;
                                 align-items: center;
                             }
-                                #writingCenter input{
+                                #writingCenter input:not(#postingNo){
                                     width: 400px;
                                     height: 45px;
                                     margin-left: 42px;

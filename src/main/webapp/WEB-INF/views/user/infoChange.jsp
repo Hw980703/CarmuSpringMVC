@@ -185,7 +185,7 @@
                                     <article class="infoChangeRighjt" > <input type="text" name="userNewPwRe" id="userNewPwRe" placeholder="변경 할 비밀번호를 재입력하세요"><button id="pwBtn" class="infoChangeBtn">수정</button>  </article> </article>  </form> 
                                    
                                         <article class="infoChangeTag"> <article class=infoChangeLeft>핸드폰 번호 </article>
-                                    <form action="/member/phone.do?memberId=${member.memberId }" method = "post"> <article class="infoChangeRighjt" > <input type="text" name="userPhone" id="userPhone" placeholder="핸드폰 번호를 입력하세요(-제외)" value="${newPhone }"><button id="tesubmit" class="infoChangeBtn">인증번호 발송</button></article> </article> </form>
+                                    <form action="/member/phone.do?memberId=${member.memberId }" method = "post"> <article class="infoChangeRighjt" > <input type="text" name="userPhone" id="userPhone" placeholder="핸드폰 번호를 입력하세요(-제외 11자리)" value="${newPhone }"><button id="tesubmit" class="infoChangeBtn">인증번호 발송</button></article> </article> </form>
 									                                      
                                         <article class="infoChangeTag"> <article class=infoChangeLeft> </article>
                                     <form action="/member/phoneChange.do?newPhone=${newPhone}&number=${number}" method ="post"><article class="infoChangeRighjt">     <input type="text" name="userPhoneChec" id="userPhoneChec" class= "userPhoneChec" placeholder="인증번호4자리"><button id="telcon" class="infoChangeBtn">인증 </button>  인증번호 : ${number} </article></article> </form>

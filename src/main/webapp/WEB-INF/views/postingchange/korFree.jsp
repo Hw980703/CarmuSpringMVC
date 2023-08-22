@@ -195,9 +195,10 @@
                                     </article>
                                     <form action = "/korboard/change.do" method = "post">
                                     <article id="writingCenter">
-                                  <input type="text" name = "korFreeBoardNo" value="${korFreeBoard.korFreeBoardNo}" >
+                             
                                     <br>
                                         <span>제목  </span> <input type="text" name="writeTitle" id="writeTitle" value="${korFreeBoard.korFreeBoardSubject}" placeholder="제목을 입력하세요.">
+                                        <input type="text" name = "korFreeBoardNo" value="${korFreeBoard.korFreeBoardNo}" id="postingNo">
                                     </article>
                                     <article id="writingMain">
                                         <article id="writingMainSub">
@@ -221,7 +222,7 @@
                                     </article>
                                     <article id="writingBtn">
                                         <article id="writingBtnTag">
-                                            <button id="jacBtn"> <input type="submit" value="수정"></button> <button id="noWrite">취소</button>
+                                            <button id="jacBtn"> <input type="submit" value="수정"  id="changeBtn"></button> <button id="noWrite">취소</button>
                                         </article>
                                     </article>
                                     </form>

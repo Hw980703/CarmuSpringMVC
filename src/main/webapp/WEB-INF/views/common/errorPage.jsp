@@ -11,9 +11,10 @@
 
 	<script>
 		const msg = "${msg}";
+		const url = "${url}";
 		if(msg != ""){
 			alert(msg);
-			location.href="${url}";
+			location.href=url;
 		}
 	
 	</script>

@@ -68,6 +68,7 @@
                                 <section id="login-top-left">
                                 <article id="login-top-id">
                                     <input type="text" name="user-id" id="user-id" placeholder="ID를 입력하세요">
+                                  
                                 </article>
                                 <article id="login-top-pw">
                                     <input type="password" name="user-pw" id="user-pw" placeholder="PW를 입력하세요.">
@@ -82,7 +83,7 @@
                             <section id="login-bottom">
                                 <article id="login-bottom-footer">
                                     <ul id="footer-ul">
-                                        <div id=footer-IDPW><li> <a href="./idGet.html">ID/PW 찾기 I</a></li></div>
+                                        <div id=footer-IDPW><li> <a href="./idGet.html">ID/PW 찾기</a></li></div>
                                         <div id=footer-signUp><li> <a href="/member/register.do">회원가입  </a></li></div>
                                     </ul>
                                 </article>
@@ -173,13 +174,14 @@
                                                     <input  class="signInput" type="text" name="user-email" id="user-email" placeholder="이메일은 @을 포함하여 작성해주세요."> 
                                               </article>
 <!--                                                           <span class="signEmTx">아이디는 영문+숫자 6자~10자 사이로 입력해주세요.</span>   -->
-                                                <article class = "signInfoTag"id="signTag2"><button class="signButton" disabled  >ID</button>
-                                                    <input  class="signInput" type="text" name="user-id" id="user-id1" placeholder="아이디는 영문+숫자 6자~10자 사이로 입력해주세요."> </article>
+                                                <article class = "signInfoTag"id="signTag2"><button class="signButton" disabled  >아이디</button>
+                                                    <input  class="signInput" type="text" name="user-id" id="user-id1" placeholder="아이디는 영문+숫자 6자~10자 사이로 입력해주세요."> 
+                                                     </article>
 <!--                                                      <span class="signEmTx">비밀번호는 숫자 6자~10자 사이로 입력해주세요.</span> -->
-                                                <article class = "signInfoTag"id="signTag3"><button class="signButton" disabled >PW</button>
+                                                <article class = "signInfoTag"id="signTag3"><button class="signButton" disabled >비밀번호</button>
                                                     <input  class="signInput" type="text" name="user-p2" id="user-pw2" placeholder="비밀번호는 숫자 6자~10자 사이로 입력해주세요." ></article>
 <!--                                                    <span class="signEmTx">비밀번호를 재입력해서 확인해주세요.</span> -->
-                                                    <article class = "signInfoTag"id="signTag4"><button class="signButton" disabled  >re : PW</button>
+                                                    <article class = "signInfoTag"id="signTag4"><button class="signButton" disabled  >비밀번호 재입력</button>
                                                     <input  class="signInput" type="text" name="user-pw3" id="user-pw3" placeholder="비밀번호를 재입력해서 확인해주세요." ></article>
 <!--                                                  <span class="signEmTx">닉네임을 설정해주세요.</span> -->
                                                     <article class = "signInfoTag"id="signTag5"><button class="signButton" disabled >닉네임</button>
@@ -189,12 +191,13 @@
                                                     <article class = "signInfoTag"id="signTag6"><button class="signButton" disabled >이름</button>
                                                     <input  class="signInput" type="text" name="user-name" id="user-name1" placeholder="이름을 입력하세요." ></article>
 <!--                                                    <span class="signEmTx">전화번호를 입력해주세요.</span> -->
-                                                    <article class = "signInfoTag"id="signTag7"><button class="signButton" disabled >TEL</button>
+                                                    <article class = "signInfoTag"id="signTag7"><button class="signButton" disabled >전화번호</button>
                                                     <input  class="signInput" type="text" name="user-tel1" id="user-tel1" placeholder="하이픈(-) 제외 전화번호를 입력하세요." ></article>
                                                     
                                                     <article class = "signInfoTag"id="signTag8">
-<!--                                                     <button class="signButton" id="signupbutn">	 -->
-                                                    <input type="submit" id = "signupbutn" value="가입하기"></button>
+                                                   
+                                                    <input type="submit" id = "signupbutn" value="가입하기" >
+<!--                                                     <button type="button" onclick="signupButtonClick()" id = "signupbutn2" > 체크 </button> -->
                                                    </form>
                                             
                                                 
@@ -226,13 +229,63 @@
 
         </header>
     </div>
-
+<script src="https://code.jquery.com/jquery-3.4.1.js"></script>
     <script>
+    
+//     function checkDuplicate() {
+//     	  var userId = document.getElementById('user-id1').value;
+//     	  // 서버로 userId를 전송하고 응답을 받아서 처리하는 로직을 작성하세요.
+//     	  // 응답 결과에 따라 return true 또는 false를 결정합니다.
+    	  
+//     	  // 예시: 응답이 'duplicate'인 경우
+//     	  var resultDiv = document.getElementById('result');
+//     	  resultDiv.textContent = '이미 사용 중인 아이디입니다.';
+//     	  return false; // 폼 제출을 막음
+    	  
+//     	  // 예시: 응답이 'available'인 경우
+//     	  resultDiv.textContent = '사용 가능한 아이디입니다.';
+//     	  return true; // 폼 제출을 허용
+//     	}
 
+   
 document.addEventListener("DOMContentLoaded",()=>{
                 alert("카뮤니티는 회원제 사이트 입니다.\n로그인을 하지 않으면 게시판 작동이 되지 않습니다."  );
             }) 
-            document.querySelector("#signupbutn").addEventListener("click", ()=>{
+            
+                     function signupButtonClick() {
+
+    var emailVal = document.querySelector("#user-email").value;
+    var idVal = document.querySelector("#user-id1").value;
+    var pwVal = document.querySelector("#user-pw2").value;
+    var pwreVal = document.querySelector("#user-pw3").value;
+    var nicVal = document.querySelector("#user-nic").value;
+    var nameVal = document.querySelector("#user-name1").value;
+    var telVal = document.querySelector("#user-tel1").value;
+
+    var emailExp = /^[a-z0-9]+\@[a-z]+\.[a-z]+$/;
+    var idExp = /^[a-z0-9]{6,10}$/;
+    var pwExp = /^\d{6,10}$/;
+    var nicExp = /^[가-힣]{1,6}$/;
+    var nameExp = /^[가-힣]{1,6}$/;
+    var telExp = /^\d{11}$/;
+
+    console.log(emailVal)
+    if (emailExp.test(emailVal) && idExp.test(idVal) && pwExp.test(pwVal) &&
+        pwVal == pwreVal && nicExp.test(nicVal) && nameExp.test(nameVal) &&
+        telExp.test(telVal)) {
+        alert("가입이 완료 되었습니다! 로그인페이지로 이동합니다.")
+        location.href = "../user/login.html"
+    } else {
+        alert("항목을 올바르게 입력해주세요");
+        return;
+    }
+}
+            
+
+document.querySelector("#signupbutn2").addEventListener("click", signupButtonClick);
+
+            
+            document.querySelector("#signupbutn2").addEventListener("click", ()=>{
                 var emailVal = document.querySelector("#user-email").value;
                 var idVal = document.querySelector("#user-id1").value;
                 var pwVal = document.querySelector("#user-pw2").value;

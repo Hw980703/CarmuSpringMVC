@@ -19,19 +19,42 @@
              #toptr{
         background: skyblue;
         }
-            table{
-            text-align: center;
-		width : 800px;
-/* 		border : 1px solid black; */
-		border-collapse : collapse;
-	}
-	a {
-	color: black;
-	}
+/*             table{ */
+/*             text-align: center; */
+/* 		width : 800px; */
+/* /* 		border : 1px solid black; */ */
+/* 		border-collapse : collapse; */
+/* 	} */
+
+
 	
-	th,td:not(#pageTd){
-	border-bottom : 1px solid black;
+/* 	ㅇ */
+		  table {
+            width: 100%;
+            border-top: 1px solid #d3d3d3;
+            border-collapse: collapse;
+            }
+            th { background-color: #dbddf2 ; 
+            border-top: 2px solid #727272;
+            }
+            th, td {
+            border-bottom: 1px solid #d3d3d3;
+            padding: 10px;
+            }
+	#noticeSerachBtn{
+		background-color:  white;
+		border : 1px solid black;
+
 	}
+/* 	* ㅇㅇ */
+	
+/* 	th,td:not(#pageTd){ */
+/* 	border-bottom : 1px solid black; */
+/* 	} */
+
+a{
+	color : black;
+}
             div{
                 --border : 1px solid black;
                 width: 1200px;

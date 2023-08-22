@@ -187,9 +187,9 @@
                                           ${notice.noticeContent}
                                     </section>
                                     <section id="writeMainBtn">
-                                        <button id="backNotice"><a href="/notice/list.do"> 목록 </a></button> 
-                                           <button><a href="/notice/modify.do?noticeNo=${notice.noticeNo}"> 수정하기 </a></button>
-                                              <button ><a href="/notice/delete.do?noticeNo=${notice.noticeNo}"> 삭제하기 </a></button>
+                                        <button id="backNotice" class="noticeBtn"><a href="/notice/list.do" > 목록 </a></button> 
+                                           <button class="noticeBtn"><a href="/notice/modify.do?noticeNo=${notice.noticeNo}" > 수정하기 </a></button>
+                                              <button class="noticeBtn" ><a href="/notice/delete.do?noticeNo=${notice.noticeNo}"  > 삭제하기 </a></button>
                                     </section>
                                         <br>
                                     <hr>

@@ -16,6 +16,15 @@
                 left: 150px;
                 display: none;
             }
+            a{
+            color : white;
+            }
+            .noticeBtn{
+            	background-color:  gray;
+            	border : 1px solid #ccc;
+            	padding:5px;
+            	margin:4px;
+            	}
             
             div{
                 --border : 1px solid black;

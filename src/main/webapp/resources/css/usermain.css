@@ -639,7 +639,7 @@
                 height: 8%;
                 --border : 2px solid purple;
                 margin-top : 10px;
-                background-color: #eee;
+                background-color: #eeecee;
 
             }
                 #main-btn a{
@@ -666,7 +666,7 @@
                             border-radius: 50%;
                         }
                 #btn-left{
-                    border : 1px solid black;
+/*                     border : 1px solid black; */
                     width: 35%;
                     height: 100%;
                     float: left;
@@ -686,7 +686,7 @@
                         float: left;
                     }
                 #btn-right{
-                    border : 1px solid  black;
+/*                     border : 1px solid  black; */
                     width: 65%;
                     height: 100%;
                     float: left;
@@ -1098,7 +1098,7 @@
 
                     }
                 #globalNews{
-                    border : 1px solid black;
+/*                     border : 1px solid black; */
                     width: 49.2%;
                     height: 95%;
                     float: left;

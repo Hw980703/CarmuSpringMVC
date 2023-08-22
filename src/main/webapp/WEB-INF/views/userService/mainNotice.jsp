@@ -264,15 +264,15 @@ text-align: center;
 					<table>
 						<colgroup>
 							<col width="10%">
-							<col width="55%">
+							<col width="53%">
 							<col width="10%">
+							<col width="20%">
 							<col width="15%">
-							<col width="10%">
 						</colgroup>
 						<thead>
 							<tr>
-								<th>글번호</th>
-								<th>글제목</th>
+								<th>번호</th>
+								<th>제목</th>
 								<th>글쓴이</th>
 								<th>작성일</th>
 								<th>조회수</th>
@@ -307,7 +307,7 @@ text-align: center;
 						</tbody>
 
 					</table>
-						<button id="noticeWriteBtn"><a href="/notice/insert.do">작성하기</a></button>
+						<button id="noticeWriteBtn" class = "noticeBtn"><a href="/notice/insert.do">작성하기</a></button>
 						<td colspan="4">
 					<form action="/notice/search.do" method="post" id="searchForm">
 						<select name="searchCondiition" class="searchTag">
@@ -320,7 +320,7 @@ text-align: center;
 							<option value="content">내용</option>
 						</select>
 						<input type="text" name="searchKeyword" placeholder="검색어를 입력하세요" class="searchTag">
-						<input type="submit" value="검색" class="searchTag">
+						<input type="submit" value="검색" class="searchTag noticeBtn ">
 
 					</form>
 					</td>

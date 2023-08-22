@@ -193,7 +193,7 @@
                                         
                                         </select>
                                     </article>
-                                    <form action = "/write/korFree.do?korFreeBoardWriter=${member.memberName}" method = "post" enctype="multipart/form-data">
+                                    <form action = "/write/korFree.do?korFreeBoardWriter=${member.memberNicName}" method = "post" enctype="multipart/form-data">
                                     <article id="writingCenter">
                                         <span>제목 </span> <input type="text" name="korFreeBoardSubject" id="writeTitle" placeholder="제목을 입력하세요.">
                                     </article>

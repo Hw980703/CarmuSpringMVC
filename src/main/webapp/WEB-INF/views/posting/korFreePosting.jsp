@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -190,20 +190,29 @@
                                             <img src="../resources/image/001.jpg" alt="writeImg" width="60%">
                                         </article>
                                         <article id="topTitle">
-                                            <h6>닉네임 : ${korFreeBoard.korFreeBoardWriter}</h6>
+                                            <h6>글쓴이 : ${korFreeBoard.korFreeBoardWriter}</h6>
                                             <h6>등급 : 소형</h6>
                                         </article>
                                         <article id="writeAll">
-                                                댓글:2 추천:1 조회:5
+                                                댓글:2 추천:1 조회:0
                                         </article>
                                 </section>
                                 <section id="writeMaincenter">
                                     <article id="writeP">
-                                              
-                                                 	<img src = "/resources/nuploadFiles/${korFreeBoard.korFreeBoardFilename }" width="100%" height="100%">
+                                    
+                                    
+                                    	
+                                    	
+                                              		<c:if test= "${korFreeBoard.korFreeBoardFilename != '' || korFreeBoard.korFreeBoardFilename ne null}">
+                                              		
+                                                 	<img src = "/resources/nuploadFiles/${korFreeBoard.korFreeBoardFilename }" width="500px" height="300px" alt="포스팅이미지">
+                                              		</c:if>
+                                       
                                                <pre>   ${korFreeBoard.korFreeBoardContent}
                                               
                                                </pre>
+                                       
+                                    	
                                             </article>
                                     <article id="writegood">
                                         <button id="writeGoodBtn">추천 1</button>
@@ -215,10 +224,10 @@
                                 </section>
                                 <section id="writeMainFooter">
                                     <article id="comment1">
-                                        종로구보안관 : 차 멋집니다!
+                                        일용자 : 댓글 1
                                     </article>
                                     <article id="comment2">
-                                        강북구보안관 : 날씨 좋은날 세차 하기 좋죠!
+                                        이용자 : 댓글 2
                                     </article>
                                     <article id="commentAdd">
                                         댓글 <input type="text" name="comment" id="comment" placeholder="댓글을 입력해주세요."> <button>등록</button>

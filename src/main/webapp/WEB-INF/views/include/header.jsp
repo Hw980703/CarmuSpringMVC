@@ -19,7 +19,7 @@
 			<header id="menu">
 				<article id="menuTag">
 					<ul id="menuUl">
-						<li class="menuClass">${member.memberName}</li>
+						<li class="menuClass">${member.memberName}님</li>
 						<li class="menuClass"><a href="/member/mypage.do?memberId=${memberId}">MY </a></li>
 						<li class="menuClass"><a href="/member/info.do">정보수정 </a></li>
 						<li class="menuClass" id="menuMy"><a href="#"> <span

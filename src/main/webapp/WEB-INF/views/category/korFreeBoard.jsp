@@ -295,9 +295,9 @@
 <table>
 		<colgroup>
 			<col width="12%">
-			<col width="55%">
+			<col width="52%">
 			<col width="15%">
-			<col width="10%">
+			<col width="14%">
 			<col width="10%">
 		</colgroup>
 		<thead>
